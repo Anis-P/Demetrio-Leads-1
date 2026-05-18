@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demetrio Leads — Lead Generation & Call Centre Outsourcing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f3ee;
+    --gold: #c8a95a;
+    --gold-light: #e8d090;
+    --crimson: #c0392b;
+    --slate: #1a1a2e;
+    --muted: #7a7a8a;
+    --card-bg: #ffffff;
+    --border: rgba(200,169,90,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 40px; height: 40px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.12s ease;
+    opacity: 0.6;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(245,243,238,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--ink);
+    transition: all 0.25s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: var(--ink) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(200,169,90,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,90,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-left { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 30px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+  }
+  h1 .accent { color: var(--gold); display: block; }
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #444;
+    max-width: 480px;
+    margin-bottom: 2.8rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 2.2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    display: inline-block;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.3s ease;
+    z-index: 0;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--ink); border-color: var(--gold); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: 1rem 2.2rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    display: inline-block;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-visual {
+    width: 100%; max-width: 520px;
+    aspect-ratio: 1;
+    position: relative;
+  }
+  .hero-ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid var(--border);
+    animation: spin-slow linear infinite;
+  }
+  .hero-ring:nth-child(1) { inset: 0; animation-duration: 30s; }
+  .hero-ring:nth-child(2) { inset: 10%; animation-duration: 20s; animation-direction: reverse; }
+  .hero-ring:nth-child(3) { inset: 22%; border-style: dashed; animation-duration: 45s; }
+
+  .hero-ring::before {
+    content: '';
+    position: absolute; top: 50%; left: 0;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(-4px);
+  }
+
+  .hero-core {
+    position: absolute; inset: 32%;
+    background: var(--ink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.3rem;
+  }
+  .hero-core-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .orbit-label {
+    position: absolute;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+
+  /* ── MARQUEE ── */
+  .marquee-bar {
+    background: var(--ink);
+    padding: 1rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .marquee-track {
+    display: flex; gap: 4rem;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--paper);
+    white-space: nowrap;
+  }
+  .marquee-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 4rem; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: block; width: 24px; height: 1px; background: var(--gold);
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.2rem;
+  }
+  .section-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #555;
+    max-width: 600px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--paper); }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .service-tabs {
+    display: flex; gap: 0.5rem;
+    background: rgba(200,169,90,0.1);
+    padding: 0.4rem;
+    border-radius: 2px;
+  }
+  .tab-btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+    cursor: none;
+    transition: all 0.2s;
+    color: var(--muted);
+  }
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(200,169,90,0.15);
+  }
+  .service-card {
+    background: var(--card-bg);
+    padding: 2.8rem 2.4rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    display: none;
+  }
+  .service-card.active { display: block; }
+  .service-card:hover { background: var(--ink); }
+  .service-card:hover .sc-title,
+  .service-card:hover .sc-desc { color: var(--paper); }
+  .service-card:hover .sc-icon { background: var(--gold); color: var(--ink); }
+  .service-card:hover .sc-num { color: rgba(255,255,255,0.08); }
+  .service-card:hover .sc-arrow { color: var(--gold); }
+
+  .sc-num {
+    position: absolute; top: 1.5rem; right: 1.8rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: rgba(200,169,90,0.1);
+    line-height: 1;
+    transition: color 0.3s;
+    user-select: none;
+  }
+  .sc-icon {
+    width: 48px; height: 48px;
+    background: rgba(200,169,90,0.12);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.8rem;
+    transition: all 0.3s;
+  }
+  .sc-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+    transition: color 0.3s;
+    line-height: 1.1;
+  }
+  .sc-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #666;
+    transition: color 0.3s;
+  }
+  .sc-arrow {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: all 0.3s;
+  }
+  .service-card:hover .sc-arrow { transform: translateX(6px); }
+
+  /* ── WHY US ── */
+  #why {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  #why::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,169,90,0.08) 0%, transparent 70%);
+  }
+  #why h2, #why .section-tag { color: var(--paper); }
+  #why .section-tag { color: var(--gold-light); }
+  #why .section-desc { color: rgba(245,243,238,0.6); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 5rem;
+    align-items: center;
+  }
+  .why-features { display: flex; flex-direction: column; gap: 2.5rem; }
+  .why-feat {
+    display: flex; gap: 1.8rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(200,169,90,0.12);
+  }
+  .why-feat:last-child { border-bottom: none; padding-bottom: 0; }
+  .why-feat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    width: 24px;
+  }
+  .why-feat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .why-feat-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(245,243,238,0.55);
+  }
+
+  .why-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px;
+    background: rgba(200,169,90,0.15);
+  }
+  .why-stat-box {
+    background: rgba(255,255,255,0.04);
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    transition: background 0.3s;
+  }
+  .why-stat-box:hover { background: rgba(200,169,90,0.1); }
+  .why-stat-box:first-child { grid-column: 1 / -1; padding: 3rem 2.5rem; }
+  .wsb-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .wsb-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.45);
+  }
+
+  /* ── PROCESS ── */
+  #process { background: #faf9f5; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 3.5rem; left: 12.5%; right: 12.5%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    z-index: 0;
+  }
+  .process-step {
+    padding: 0 2rem;
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+  .ps-num {
+    width: 64px; height: 64px;
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin: 0 auto 2rem;
+    transition: all 0.3s;
+  }
+  .process-step:hover .ps-num {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+    transform: scale(1.1);
+  }
+  .ps-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .ps-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* ── DATA SOLUTIONS ── */
+  #data { background: var(--paper); }
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 5rem;
+    margin-top: 5rem;
+    align-items: start;
+  }
+  .data-sidebar { position: sticky; top: 8rem; }
+  .data-sidebar p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #555;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .data-tiers { display: flex; flex-direction: column; gap: 1.5px; }
+  .data-tier {
+    padding: 2rem 2.2rem;
+    background: var(--card-bg);
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .data-tier.featured {
+    border-left-color: var(--gold);
+    background: var(--ink);
+  }
+  .data-tier:not(.featured):hover { border-left-color: var(--gold); }
+  .dt-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .dt-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .data-tier.featured .dt-title { color: var(--paper); }
+  .dt-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #666;
+  }
+  .data-tier.featured .dt-desc { color: rgba(245,243,238,0.6); }
+
+  /* ── INDUSTRIES ── */
+  #industries { background: var(--ink); }
+  #industries h2 { color: var(--paper); }
+  #industries .section-tag { color: var(--gold); }
+  .industries-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(200,169,90,0.1);
+    margin-top: 5rem;
+  }
+  .industry-item {
+    padding: 2.8rem 2.5rem;
+    background: var(--slate);
+    display: flex; align-items: center; gap: 1.8rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .industry-item:hover { background: rgba(200,169,90,0.08); }
+  .ind-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+  .ind-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    color: var(--paper);
+    margin-bottom: 0.3rem;
+  }
+  .ind-sub {
+    font-size: 0.78rem;
+    color: rgba(245,243,238,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: #faf9f5; }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .testi-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-top: 2px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .testi-card:hover { border-top-color: var(--gold); }
+  .testi-quote {
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    font-family: Georgia, serif;
+    margin-bottom: 1rem;
+  }
+  .testi-text {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.8rem;
+    font-style: italic;
+  }
+  .testi-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+  .testi-role {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::after {
+    content: 'CONNECT';
+    position: absolute; bottom: -2rem; right: -1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12rem;
+    color: rgba(200,169,90,0.04);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    user-select: none;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  #contact h2 { color: var(--paper); }
+  #contact .section-tag { color: var(--gold); }
+  .contact-info { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+  .ci-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .ci-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(200,169,90,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .ci-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .ci-val {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.75);
+  }
+
+  .contact-form { padding-top: 0.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+  label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  input, textarea, select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,169,90,0.2);
+    color: var(--paper);
+    padding: 0.9rem 1.1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+    resize: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold);
+    background: rgba(200,169,90,0.06);
+  }
+  input::placeholder, textarea::placeholder { color: rgba(245,243,238,0.2); }
+  select option { background: var(--ink); }
+  .form-submit {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 1.1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: none;
+    transition: all 0.25s;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050508;
+    color: rgba(245,243,238,0.4);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--paper);
+    letter-spacing: 0.1em;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; text-align: right; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .data-grid { grid-template-columns: 1fr; }
+    .data-sidebar { position: static; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .industries-list { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .footer-copy { text-align: left; }
+    h1 { font-size: 3.5rem; }
+  }
+
+  /* Notification */
+  .notify {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+  .notify.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<div class="notify" id="notify">Message sent successfully!</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Demetrio<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#data">Data Sales</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal">Lead Generation & Outsourcing Specialists</div>
+    <h1 class="reveal reveal-delay-1">
+      Fuel Your<br>
+      <span class="accent">Growth</span>
+      Pipeline
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      We deliver premium-quality leads, targeted data, and expert call centre solutions — purpose-built for businesses ready to scale without limits.
+    </p>
+    <div class="hero-btns reveal reveal-delay-3">
+      <a href="#services" class="btn-primary"><span>Explore Services</span></a>
+      <a href="#contact" class="btn-outline">Get a Free Consultation</a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div>
+        <div class="stat-num">500K+</div>
+        <div class="stat-label">Leads Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Industries Served</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-core">
+        <div class="hero-core-text">DL<br>LEADS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track" id="marquee">
+    <div class="marquee-item"><div class="marquee-dot"></div>Health Insurance Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Live Transfers</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Data Sales</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Inbound Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Outbound Campaigns</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Solar Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Auto Insurance</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Genetics Testing</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>MCA Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Orthotics & DME</div>
+    <!-- duplicate for seamless loop -->
+    <div class="marquee-item"><div class="marquee-dot"></div>Health Insurance Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Live Transfers</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Data Sales</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Inbound Services</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Outbound Campaigns</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Solar Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Auto Insurance</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Genetics Testing</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>MCA Leads</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Orthotics & DME</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag reveal">What We Offer</div>
+      <h2 class="reveal reveal-delay-1">Our Core<br>Services</h2>
+      <p class="section-desc reveal reveal-delay-2">End-to-end lead generation and call centre outsourcing solutions tailored to your growth objectives.</p>
+    </div>
+    <div class="service-tabs reveal">
+      <button class="tab-btn active" data-tab="leads">Lead Generation</button>
+      <button class="tab-btn" data-tab="call">Call Centre</button>
+    </div>
+  </div>
+
+  <div class="services-grid" id="services-grid">
+    <!-- LEAD GEN -->
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">01</div>
+      <div class="sc-icon">🏥</div>
+      <div class="sc-title">Health Insurance Leads</div>
+      <div class="sc-desc">Premium health insurance leads sourced via internet, direct mail, TV/radio, and live transfers. High-intent prospects verified and ready to convert.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">02</div>
+      <div class="sc-icon">🩺</div>
+      <div class="sc-title">Orthotics & DME Leads</div>
+      <div class="sc-desc">Compliant orthotics and glucose monitor leads generated from form fills and inbound calls. Fully triaged leads available for maximum ROI.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">03</div>
+      <div class="sc-icon">🧬</div>
+      <div class="sc-title">Genetics Testing Leads</div>
+      <div class="sc-desc">Targeted leads connecting you with high-intent individuals interested in genetic testing services — precisely matched to your ideal patient profile.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">04</div>
+      <div class="sc-icon">💼</div>
+      <div class="sc-title">MCA Live Transfers</div>
+      <div class="sc-desc">Strike while the iron is hot. Merchants and entrepreneurs connected to you in real-time via live transfers — zero time wasted on cold prospecting.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">05</div>
+      <div class="sc-icon">🚗</div>
+      <div class="sc-title">Auto Insurance Leads</div>
+      <div class="sc-desc">Internet auto leads developed through PPC, email, search, and organic channels. Scalable pipelines for agents and agencies of every size.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card active" data-category="leads">
+      <div class="sc-num">06</div>
+      <div class="sc-icon">☀️</div>
+      <div class="sc-title">Solar Energy Leads</div>
+      <div class="sc-desc">Connect with homeowners and businesses actively researching solar solutions. High-quality prospects in the booming renewable energy market.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+
+    <!-- CALL CENTRE -->
+    <div class="service-card" data-category="call">
+      <div class="sc-num">01</div>
+      <div class="sc-icon">📲</div>
+      <div class="sc-title">Inbound Services</div>
+      <div class="sc-desc">Professionally trained agents handle your incoming calls, initiate sales, and route traffic seamlessly — scaling your capacity without scaling your overhead.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card" data-category="call">
+      <div class="sc-num">02</div>
+      <div class="sc-icon">📞</div>
+      <div class="sc-title">Outbound Campaigns</div>
+      <div class="sc-desc">Expert outbound agents for new account acquisition, surveys, donation campaigns, and fronting — qualifying prospects before your closers engage.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card" data-category="call">
+      <div class="sc-num">03</div>
+      <div class="sc-icon">🤖</div>
+      <div class="sc-title">Automated IVR Services</div>
+      <div class="sc-desc">Intelligent IVR and automation to qualify, divert, and route calls to the right teams — minimizing cost, maximizing efficiency at every touchpoint.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card" data-category="call">
+      <div class="sc-num">04</div>
+      <div class="sc-icon">📊</div>
+      <div class="sc-title">Campaign Analytics</div>
+      <div class="sc-desc">Real-time reporting and campaign dashboards so you always know your cost-per-acquisition, conversion rates, and agent performance at a glance.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card" data-category="call">
+      <div class="sc-num">05</div>
+      <div class="sc-icon">🎯</div>
+      <div class="sc-title">Lead Qualification</div>
+      <div class="sc-desc">Our agents pre-qualify leads to your exact criteria before passing them to your sales team — so your closers only speak to decision-ready prospects.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+    <div class="service-card" data-category="call">
+      <div class="sc-num">06</div>
+      <div class="sc-icon">🔄</div>
+      <div class="sc-title">CRM Integration</div>
+      <div class="sc-desc">Seamless API integration with your existing CRM and dialer stack. Data flows automatically, eliminating manual entry and human error from your pipeline.</div>
+      <div class="sc-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <div class="section-tag reveal">Why Demetrio</div>
+      <h2 class="reveal reveal-delay-1">Built for<br>Results</h2>
+      <p class="section-desc reveal reveal-delay-2">We're not just a vendor — we're a growth partner. Every lead, every call, every data set is crafted to move the needle for your business.</p>
+      <div class="why-features" style="margin-top: 3rem;">
+        <div class="why-feat reveal">
+          <div class="why-feat-num">01</div>
+          <div>
+            <div class="why-feat-title">Compliance First</div>
+            <div class="why-feat-desc">Every lead is generated in full compliance with TCPA, HIPAA, and relevant regulations — protecting your business from liability.</div>
+          </div>
+        </div>
+        <div class="why-feat reveal reveal-delay-1">
+          <div class="why-feat-num">02</div>
+          <div>
+            <div class="why-feat-title">Exclusive Data Access</div>
+            <div class="why-feat-desc">Fresh-from-the-feed exclusive data delivered directly to your dialer or CRM via API, giving you first-mover advantage on every opportunity.</div>
+          </div>
+        </div>
+        <div class="why-feat reveal reveal-delay-2">
+          <div class="why-feat-num">03</div>
+          <div>
+            <div class="why-feat-title">Scalable Infrastructure</div>
+            <div class="why-feat-desc">Whether you need 100 leads or 100,000, our infrastructure scales with your campaigns — no bottlenecks, no downtime.</div>
+          </div>
+        </div>
+        <div class="why-feat reveal reveal-delay-3">
+          <div class="why-feat-num">04</div>
+          <div>
+            <div class="why-feat-title">Dedicated Account Management</div>
+            <div class="why-feat-desc">A real human partner oversees your account, optimizes campaigns, and ensures consistent quality every step of the way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="why-stat-box">
+        <div class="wsb-num">$2.8B+</div>
+        <div class="wsb-label">Revenue generated for clients</div>
+      </div>
+      <div class="why-stat-box">
+        <div class="wsb-num">50K+</div>
+        <div class="wsb-label">Leads monthly</div>
+      </div>
+      <div class="why-stat-box">
+        <div class="wsb-num">12+</div>
+        <div class="wsb-label">Years experience</div>
+      </div>
+      <div class="why-stat-box">
+        <div class="wsb-num">24/7</div>
+        <div class="wsb-label">Campaign support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align: center; margin-bottom: 0;">
+    <div class="section-tag reveal" style="justify-content: center;">How It Works</div>
+    <h2 class="reveal reveal-delay-1">From Onboarding<br>to Closing</h2>
+    <p class="section-desc reveal reveal-delay-2" style="margin: 0 auto; text-align: center;">A streamlined four-step process gets your campaigns live — and delivering results — fast.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="ps-num">01</div>
+      <div class="ps-title">Discovery Call</div>
+      <div class="ps-desc">We learn your business, target audience, geography, and KPIs so we can design the perfect campaign from the ground up.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <div class="ps-num">02</div>
+      <div class="ps-title">Campaign Design</div>
+      <div class="ps-desc">Our team builds a custom lead generation or call centre strategy, selects the right data sources, and prepares all assets.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="ps-num">03</div>
+      <div class="ps-title">Launch & Integration</div>
+      <div class="ps-desc">Campaigns go live. Data flows to your CRM or dialer via API. Agents begin working your pipeline — often within days, not weeks.</div>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="ps-num">04</div>
+      <div class="ps-title">Optimize & Scale</div>
+      <div class="ps-desc">We monitor, report, and continuously refine to improve your cost-per-lead, conversion rates, and overall ROI at every stage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA SOLUTIONS -->
+<section id="data">
+  <div class="data-grid">
+    <div class="data-sidebar">
+      <div class="section-tag reveal">Data Sales</div>
+      <h2 class="reveal reveal-delay-1">The Right Data<br>at Every Price</h2>
+      <p class="reveal reveal-delay-2">
+        We offer three tiers of data — from fresh exclusives to cost-conscious aged sets — so you can match your investment to your strategy and margins.
+      </p>
+      <a href="#contact" class="btn-primary reveal reveal-delay-3"><span>Request a Data Sample</span></a>
+    </div>
+    <div class="data-tiers reveal">
+      <div class="data-tier featured">
+        <div class="dt-badge">Most Popular</div>
+        <div class="dt-title">Exclusive Fresh Data</div>
+        <div class="dt-desc">Straight from the feed, sold exclusively to you for the first 30 days. Delivered via Excel, Google Sheets, or API directly to your dialer or CRM. The highest-converting data set we offer — first position means first contact.</div>
+      </div>
+      <div class="data-tier">
+        <div class="dt-title">Semi-Exclusive Data</div>
+        <div class="dt-desc">A cost-effective route to your target audience. Buyers are typically in second or third position. Delivered via Excel or CSV. Ideal for businesses with strong follow-up sequences and multi-touch marketing strategies.</div>
+      </div>
+      <div class="data-tier">
+        <div class="dt-title">Aged Data</div>
+        <div class="dt-desc">Rested older data that may not have been contacted recently — making it a surprisingly productive and highly cost-conscious option. Third, fourth, or fifth position data available for volume-based outreach campaigns.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-tag reveal">Verticals</div>
+  <h2 class="reveal reveal-delay-1" style="color: var(--paper);">Industries We Serve</h2>
+  <div class="industries-list reveal reveal-delay-2">
+    <div class="industry-item">
+      <div class="ind-icon">🏥</div>
+      <div>
+        <div class="ind-name">Health Insurance</div>
+        <div class="ind-sub">ACA, Medicare, Supplemental</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">🦷</div>
+      <div>
+        <div class="ind-name">Healthcare & DME</div>
+        <div class="ind-sub">Orthotics, Glucose, Genetics</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">🚗</div>
+      <div>
+        <div class="ind-name">Auto Insurance</div>
+        <div class="ind-sub">Personal & Commercial Lines</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">☀️</div>
+      <div>
+        <div class="ind-name">Solar Energy</div>
+        <div class="ind-sub">Residential & Commercial</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">💰</div>
+      <div>
+        <div class="ind-name">Financial Services</div>
+        <div class="ind-sub">MCA, Loans, Debt Relief</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">🏡</div>
+      <div>
+        <div class="ind-name">Home Services</div>
+        <div class="ind-sub">HVAC, Roofing, Remodeling</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">⚖️</div>
+      <div>
+        <div class="ind-name">Legal Services</div>
+        <div class="ind-sub">Mass Tort, Personal Injury</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">🎗️</div>
+      <div>
+        <div class="ind-name">Non-Profit</div>
+        <div class="ind-sub">Donation Campaigns</div>
+      </div>
+    </div>
+    <div class="industry-item">
+      <div class="ind-icon">📱</div>
+      <div>
+        <div class="ind-name">Telecom</div>
+        <div class="ind-sub">Wireless, Internet, Cable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag reveal">Client Stories</div>
+  <h2 class="reveal reveal-delay-1">What Our Clients Say</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Demetrio Leads transformed our health insurance book of business. The quality of leads is genuinely unlike anything we'd seen — highly qualified, and their team is responsive around the clock.</p>
+      <div class="testi-name">Marcus T.</div>
+      <div class="testi-role">Insurance Agency Owner, Florida</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">We use their MCA live transfers exclusively now. The ROI speaks for itself — we've doubled our merchant funding volume in six months since partnering with them.</p>
+      <div class="testi-name">Priya S.</div>
+      <div class="testi-role">Director, Merchant Funding Co.</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">The API data integration into our dialer was seamless. Exclusive fresh data hits our system in real time. Our contact rates are up 40% and the team at Demetrio is always on point.</p>
+      <div class="testi-name">James R.</div>
+      <div class="testi-role">VP Operations, Solar Company</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Get In Touch</div>
+      <h2>Ready to<br>Scale Up?</h2>
+      <p style="font-size: 1rem; font-weight: 300; line-height: 1.8; color: rgba(245,243,238,0.55); margin-top: 1rem; max-width: 400px;">
+        Whether you need leads, data, or a fully managed call centre operation — we're ready to build a custom solution for your business.
+      </p>
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">info@demetrioleads.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-val">30 N Gould St Ste R, Sheridan, Wyoming 82801, USA</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Business Hours</div>
+            <div class="ci-val">Monday – Friday, 9AM – 6PM EST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label for="phone">Mobile Number</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="john@company.com">
+      </div>
+      <div class="form-group">
+        <label for="service">Service Interested In</label>
+        <select id="service">
+          <option value="" disabled selected>Select a service...</option>
+          <option>Lead Generation</option>
+          <option>Data Sales</option>
+          <option>Inbound Call Centre</option>
+          <option>Outbound Call Centre</option>
+          <option>Automated IVR Services</option>
+          <option>Full Campaign Management</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="Tell us about your business goals and campaign needs..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Demetrio<span>.</span></div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#data">Data Sales</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Demetrio Leads LLC<br>
+    Sheridan, Wyoming, USA
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll('a, button, .service-card, .tab-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; ring.style.opacity='0'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.opacity='0.6'; });
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    nav.style.boxShadow = window.scrollY > 50 ? '0 2px 30px rgba(0,0,0,0.08)' : 'none';
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.classList.remove('active');
+        if(card.dataset.category === tab) card.classList.add('active');
+      });
+    });
+  });
+
+  // Form submit
+  function handleSubmit() {
+    const notify = document.getElementById('notify');
+    notify.classList.add('show');
+    setTimeout(() => notify.classList.remove('show'), 3500);
+  }
+</script>
+<script>
+// Disable right-click silently
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+</script>
+</body>
+</html>
